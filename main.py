@@ -1,4 +1,41 @@
 import streamlit as st
+
+# Dark / Light theme switcher
+theme_mode = st.sidebar.radio("🌗 Select Theme", ["Light", "Dark"])
+
+if theme_mode == "Dark":
+    st.markdown(
+        """
+        <style>
+        .stApp {
+            background-color: #0e1117;
+            color: white;
+        }
+        div[data-testid="stSidebar"] {
+            background-color: #161b22;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+else:
+    st.markdown(
+        """
+        <style>
+        .stApp {
+            background-color: #ffffff;
+            color: black;
+        }
+        div[data-testid="stSidebar"] {
+            background-color: #f0f2f6;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+
+import streamlit as st
 import dashboard
 import admission_management
 import student_management
