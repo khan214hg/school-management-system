@@ -34,4 +34,4 @@ elif menu == "Staff Management":
 
 # Footer
 st.sidebar.markdown("---")
-st.sidebar.caption("Powered by Streamlit | Developed by Boss 😎")
+st.sidebar.caption("Powered by Streamlit | Developed by Waris Khan 😎")
