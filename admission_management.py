@@ -32,7 +32,6 @@ def app():
                 admissions_df = pd.concat([admissions_df, pd.DataFrame([new_row])], ignore_index=True)
                 admissions_df.to_csv(FILE_NAME, index=False)
                 st.success(f"Admission added for {name}")
-                st.experimental_rerun()
             else:
                 st.warning("Please fill in all fields.")
 
