@@ -5,36 +5,6 @@ import student_management
 import parents_management
 import staff_management
 
-import streamlit as st
-
-def theme_switcher():
-    theme = st.sidebar.radio("🌗 Select Theme Mode", ["Light", "Dark"])
-    if theme == "Dark":
-        st.markdown(
-            """
-            <style>
-            .stApp {
-                background-color: #0e1117;
-                color: #ffffff;
-            }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
-    else:
-        st.markdown(
-            """
-            <style>
-            .stApp {
-                background-color: #ffffff;
-                color: #000000;
-            }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
-
-
 # App title
 st.set_page_config(page_title="School Management System", layout="wide")
 st.title("🏫 School Management System")
