@@ -45,11 +45,6 @@ st.markdown(
         color: #e0e0e0 !important;
     }
 
-    /* Metrics */
-    div[data-testid="stMetricValue"], div[data-testid="stMetricLabel"] {
-        color: #00adb5 !important;
-    }
-
     /* Buttons */
     button {
         background-color: #00adb5 !important;
