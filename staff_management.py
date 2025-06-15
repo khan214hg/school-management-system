@@ -15,10 +15,10 @@ def load_data():
 def app():
     st.subheader("👩‍🏫 Staff Management")
 
-    # Load data
+    # ✅ Load staff data
     staff_df = load_data()
 
-    # Add new staff
+    # Add new staff member
     st.markdown("### Add New Staff Member")
     with st.form("staff_form"):
         name = st.text_input("Staff Name")
@@ -46,7 +46,7 @@ def app():
     st.markdown("### Staff Records")
     st.dataframe(staff_df)
 
-    # Reset staff records
+    # Reset button
     if st.button("Reset All Staff Records", key="reset_staff"):
         staff_df = pd.DataFrame(columns=["Name", "Position", "Contact", "Status"])
         staff_df.to_csv(FILE_NAME, index=False)
