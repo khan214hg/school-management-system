@@ -5,33 +5,43 @@ import student_management
 import parents_management
 import staff_management
 
-# App config
 st.set_page_config(page_title="School Management System", layout="wide")
 
-# React-style theme apply (no theme switcher)
+# Apply React-style CSS
 st.markdown(
     """
     <style>
     .stApp {
         background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-        color: #e0e0e0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     div[data-testid="stSidebar"] {
         background-color: #1a1a2e;
-        color: #e0e0e0;
+        padding-top: 2rem;
     }
-    h1, h2, h3, h4, h5, h6 {
+    .sidebar-title {
         color: #00adb5;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
     }
-    label, .css-1cpxqw2, .css-1d391kg {
-        color: #eeeeee !important;
+    .custom-nav {
+        display: flex;
+        flex-direction: column;
     }
-    div[data-testid="stMetricValue"] {
-        color: #00adb5 !important;
+    .custom-nav a {
+        color: #eeeeee;
+        padding: 0.75rem 1rem;
+        margin: 0.25rem 0;
+        text-decoration: none;
+        border-radius: 5px;
+        background-color: #393e46;
+        transition: background 0.3s;
     }
-    div[data-testid="stMetricLabel"] {
-        color: #00adb5 !important;
+    .custom-nav a:hover {
+        background-color: #00adb5;
+        color: black;
     }
     button[kind="primary"] {
         background-color: #00adb5 !important;
@@ -39,42 +49,45 @@ st.markdown(
         border-radius: 8px;
         padding: 0.5em 1em;
     }
-    button[kind="secondary"] {
-        background-color: #393e46 !important;
-        color: white !important;
-        border-radius: 8px;
-        padding: 0.5em 1em;
+    h1, h2, h3 {
+        color: #00adb5;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# App title
-st.title("🏫 School Management System")
-
-# Sidebar menu
-menu = st.sidebar.radio(
-    "Select Module",
-    [
-        "Dashboard",
-        "Admission Management",
-        "Student Management",
-        "Parents Management",
-        "Staff Management"
-    ]
+# Sidebar navbar
+st.sidebar.markdown('<div class="sidebar-title">School Manager</div>', unsafe_allow_html=True)
+st.sidebar.markdown(
+    """
+    <div class="custom-nav">
+        <a href="/?nav=Dashboard" target="_self">Dashboard</a>
+        <a href="/?nav=Admission" target="_self">Admissions</a>
+        <a href="/?nav=Student" target="_self">Students</a>
+        <a href="/?nav=Parents" target="_self">Parents</a>
+        <a href="/?nav=Staff" target="_self">Staff</a>
+    </div>
+    """,
+    unsafe_allow_html=True
 )
 
-# Load module
-if menu == "Dashboard":
+# Get nav selection from URL
+query_params = st.experimental_get_query_params()
+nav = query_params.get("nav", ["Dashboard"])[0]
+
+st.title("🏫 School Management System")
+
+# Load module based on nav
+if nav == "Dashboard":
     dashboard.app()
-elif menu == "Admission Management":
+elif nav == "Admission":
     admission_management.app()
-elif menu == "Student Management":
+elif nav == "Student":
     student_management.app()
-elif menu == "Parents Management":
+elif nav == "Parents":
     parents_management.app()
-elif menu == "Staff Management":
+elif nav == "Staff":
     staff_management.app()
 
 # Footer
