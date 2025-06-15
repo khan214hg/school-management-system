@@ -8,6 +8,9 @@ from design import apply_react_theme
 
 # App config
 st.set_page_config(page_title="School Management System", layout="wide")
+st.set_page_config(page_title="School Management System", layout="wide")
+apply_react_theme()
+
 
 # Theme switcher
 theme_mode = st.sidebar.radio("🌗 Select Theme", ["Light", "Dark"])
