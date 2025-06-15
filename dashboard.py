@@ -23,11 +23,6 @@ def load_staff():
 def app():
     st.subheader("🏫 Dashboard Overview")
 
-    # Always load latest data
-    admissions_df = load_admissions()
-    students_df = load_students()
-    staff_df = load_staff()
-
     # Show metrics
     st.metric("Total Admissions", len(admissions_df))
     st.metric("Total Students", len(students_df))
