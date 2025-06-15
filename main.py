@@ -9,6 +9,9 @@ import staff_management
 st.set_page_config(page_title="School Management System", layout="wide")
 
 # Dark / Light theme switcher
+theme_mode = st.sidebar.radio("🌗 Select Theme", ["Light", "Dark"])
+
+# Apply theme CSS
 if theme_mode == "Dark":
     st.markdown(
         """
@@ -25,6 +28,9 @@ if theme_mode == "Dark":
             color: white !important;
         }
         div[data-testid="stMetricValue"] {
+            color: white !important;
+        }
+        div[data-testid="stMetricLabel"] {
             color: white !important;
         }
         </style>
@@ -49,12 +55,15 @@ else:
         div[data-testid="stMetricValue"] {
             color: black !important;
         }
+        div[data-testid="stMetricLabel"] {
+            color: black !important;
+        }
         </style>
         """,
         unsafe_allow_html=True
     )
 
-# Title
+# App title
 st.title("🏫 School Management System")
 
 # Sidebar menu
@@ -69,7 +78,7 @@ menu = st.sidebar.radio(
     ]
 )
 
-# Load module
+# Call modules
 if menu == "Dashboard":
     dashboard.app()
 elif menu == "Admission Management":
