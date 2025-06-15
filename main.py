@@ -4,83 +4,51 @@ import admission_management
 import student_management
 import parents_management
 import staff_management
-from design import apply_react_theme
 
 # App config
 st.set_page_config(page_title="School Management System", layout="wide")
-st.set_page_config(page_title="School Management System", layout="wide")
-apply_react_theme()
 
-
-# Theme switcher
-theme_mode = st.sidebar.radio("🌗 Select Theme", ["Light", "Dark"])
-
-if theme_mode == "Dark":
-    st.markdown(
-        """
-        <style>
-        .stApp {
-            background-color: #0e1117;
-            color: white;
-        }
-        div[data-testid="stSidebar"] {
-            background-color: #161b22;
-            color: white;
-        }
-        label, .css-1cpxqw2, .css-1d391kg {
-            color: white !important;
-        }
-        div[data-testid="stMetricValue"] {
-            color: white !important;
-        }
-        div[data-testid="stMetricLabel"] {
-            color: white !important;
-        }
-        button[kind="primary"] {
-            color: black !important;
-            background-color: #e1e4e8 !important;
-        }
-        button[kind="secondary"] {
-            color: black !important;
-            background-color: #e1e4e8 !important;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-else:
-    st.markdown(
-        """
-        <style>
-        .stApp {
-            background-color: #ffffff;
-            color: black;
-        }
-        div[data-testid="stSidebar"] {
-            background-color: #f0f2f6;
-            color: black;
-        }
-        label, .css-1cpxqw2, .css-1d391kg {
-            color: black !important;
-        }
-        div[data-testid="stMetricValue"] {
-            color: black !important;
-        }
-        div[data-testid="stMetricLabel"] {
-            color: black !important;
-        }
-        button[kind="primary"] {
-            color: black !important;
-            background-color: #f0f2f6 !important;
-        }
-        button[kind="secondary"] {
-            color: black !important;
-            background-color: #f0f2f6 !important;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+# React-style theme apply (no theme switcher)
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        color: #e0e0e0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    div[data-testid="stSidebar"] {
+        background-color: #1a1a2e;
+        color: #e0e0e0;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        color: #00adb5;
+    }
+    label, .css-1cpxqw2, .css-1d391kg {
+        color: #eeeeee !important;
+    }
+    div[data-testid="stMetricValue"] {
+        color: #00adb5 !important;
+    }
+    div[data-testid="stMetricLabel"] {
+        color: #00adb5 !important;
+    }
+    button[kind="primary"] {
+        background-color: #00adb5 !important;
+        color: black !important;
+        border-radius: 8px;
+        padding: 0.5em 1em;
+    }
+    button[kind="secondary"] {
+        background-color: #393e46 !important;
+        color: white !important;
+        border-radius: 8px;
+        padding: 0.5em 1em;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # App title
 st.title("🏫 School Management System")
