@@ -112,10 +112,22 @@ nav = query_params.get("nav", "Dashboard")
 
 st.title("🏫 School Management System")
 
-import plotly.express as px
+import pandas as pd
+
+# Helper to load csv
+def load_csv(file_name, default_cols):
+    try:
+        return pd.read_csv(file_name)
+    except:
+        return pd.DataFrame(columns=default_cols)
+
+# Load data
+students_df = load_csv("students.csv", ["Name", "Class", "Contact", "Status"])
+staff_df = load_csv("staff.csv", ["Name", "Role", "Contact", "Status"])
+admissions_df = load_csv("admissions.csv", ["Name", "Class", "Contact", "Status"])
 
 if nav == "Dashboard":
-    # Metrics block (already added as per previous step)
+    # Metrics block
     col1, col2, col3 = st.columns(3)
     with col1:
         st.metric(label="Total Students", value=f"{len(students_df)}")
@@ -123,7 +135,7 @@ if nav == "Dashboard":
         st.metric(label="Total Staff", value=f"{len(staff_df)}")
     with col3:
         st.metric(label="New Admissions", value=f"{len(admissions_df)}")
-    
+
     # Analytics graph
     st.markdown("### 📊 Admissions by Class")
     if not admissions_df.empty:
@@ -135,7 +147,7 @@ if nav == "Dashboard":
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("No admissions data available to display graph.")
-
+        
 # Load module
 if nav == "Dashboard":
     dashboard.app()
