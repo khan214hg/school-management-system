@@ -5,13 +5,13 @@ import student_management
 import parents_management
 import staff_management
 
-# App page config
+# App config
 st.set_page_config(page_title="School Management System", layout="wide")
 
-# Dark / Light theme switcher selector
+# Dark / Light theme switcher
 theme_mode = st.sidebar.radio("🌗 Select Theme", ["Light", "Dark"])
 
-# Apply CSS based on selected theme
+# Apply theme CSS
 if theme_mode == "Dark":
     st.markdown(
         """
@@ -22,9 +22,13 @@ if theme_mode == "Dark":
         }
         div[data-testid="stSidebar"] {
             background-color: #161b22;
+            color: white;
         }
-        h1, h2, h3, h4, h5, h6, p, label, span, div, li {
+        label, .css-1cpxqw2, .css-1d391kg {
             color: white !important;
+        }
+        button {
+            color: black !important;
         }
         </style>
         """,
@@ -40,8 +44,12 @@ else:
         }
         div[data-testid="stSidebar"] {
             background-color: #f0f2f6;
+            color: black;
         }
-        h1, h2, h3, h4, h5, h6, p, label, span, div, li {
+        label, .css-1cpxqw2, .css-1d391kg {
+            color: black !important;
+        }
+        button {
             color: black !important;
         }
         </style>
@@ -49,7 +57,7 @@ else:
         unsafe_allow_html=True
     )
 
-# App title
+# Title
 st.title("🏫 School Management System")
 
 # Sidebar menu
@@ -64,7 +72,7 @@ menu = st.sidebar.radio(
     ]
 )
 
-# Call modules
+# Load module
 if menu == "Dashboard":
     dashboard.app()
 elif menu == "Admission Management":
