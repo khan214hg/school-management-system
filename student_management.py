@@ -4,15 +4,19 @@ import os
 
 FILE_NAME = "students.csv"
 
-# Check file or create if not exists
-if os.path.exists(FILE_NAME):
-    students_df = pd.read_csv(FILE_NAME)
-else:
-    students_df = pd.DataFrame(columns=["Name", "Class", "Roll Number", "Contact"])
-    students_df.to_csv(FILE_NAME, index=False)
+def load_data():
+    if os.path.exists(FILE_NAME):
+        df = pd.read_csv(FILE_NAME)
+    else:
+        df = pd.DataFrame(columns=["Name", "Class", "Roll Number", "Contact"])
+        df.to_csv(FILE_NAME, index=False)
+    return df
 
 def app():
     st.subheader("🎒 Student Management")
+
+    # Load data
+    students_df = load_data()
 
     # Add new student
     st.markdown("### Add New Student")
