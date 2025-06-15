@@ -72,9 +72,9 @@ st.sidebar.markdown(
     unsafe_allow_html=True
 )
 
-# Get nav selection from URL
-query_params = st.experimental_get_query_params()
-nav = query_params.get("nav", ["Dashboard"])[0]
+# Get nav selection from URL (modern API)
+query_params = st.query_params
+nav = query_params.get("nav", "Dashboard")
 
 st.title("🏫 School Management System")
 
