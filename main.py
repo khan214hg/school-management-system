@@ -112,6 +112,30 @@ nav = query_params.get("nav", "Dashboard")
 
 st.title("🏫 School Management System")
 
+import plotly.express as px
+
+if nav == "Dashboard":
+    # Metrics block (already added as per previous step)
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric(label="Total Students", value=f"{len(students_df)}")
+    with col2:
+        st.metric(label="Total Staff", value=f"{len(staff_df)}")
+    with col3:
+        st.metric(label="New Admissions", value=f"{len(admissions_df)}")
+    
+    # Analytics graph
+    st.markdown("### 📊 Admissions by Class")
+    if not admissions_df.empty:
+        class_counts = admissions_df["Class"].value_counts().reset_index()
+        class_counts.columns = ["Class", "Count"]
+        fig = px.bar(class_counts, x="Class", y="Count", color="Class",
+                     title="Admissions Count by Class",
+                     labels={"Count": "Number of Admissions"})
+        st.plotly_chart(fig, use_container_width=True)
+    else:
+        st.info("No admissions data available to display graph.")
+
 # Load module
 if nav == "Dashboard":
     dashboard.app()
