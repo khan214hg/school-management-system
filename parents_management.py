@@ -38,7 +38,6 @@ def app():
                 parents_df = pd.concat([parents_df, pd.DataFrame([new_row])], ignore_index=True)
                 parents_df.to_csv(FILE_NAME, index=False)
                 st.success(f"Parent record added for {parent_name}")
-                st.experimental_rerun()
             else:
                 st.warning("Please fill all fields.")
 
