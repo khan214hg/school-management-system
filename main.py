@@ -36,7 +36,7 @@ st.markdown(
 
     /* General text elements */
     p, span, div, li, label {
-        color: #000000 !important;
+        color: #e0e0e0 !important;
     }
 
     /* Metrics */
