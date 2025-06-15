@@ -21,6 +21,17 @@ menu = st.sidebar.radio(
     ]
 )
 
+if menu == "Dashboard":
+    dashboard.app()
+elif menu == "Admission Management":
+    admission_management.app()
+elif menu == "Student Management":
+    student_management.app()
+elif menu == "Parents Management":
+    parents_management.app()
+elif menu == "Staff Management":
+    staff_management.app()
+
 # Footer
 st.sidebar.markdown("---")
 st.sidebar.caption("Powered by Streamlit | Developed by Boss 😎")
