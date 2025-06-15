@@ -82,11 +82,11 @@ button:hover {
 st.sidebar.markdown('<div class="sidebar-title">School Manager</div>', unsafe_allow_html=True)
 st.sidebar.markdown("""
 <div class="custom-nav">
-<a href="/?nav=Dashboard" target="_self">🏠 Dashboard</a>
-<a href="/?nav=Admission" target="_self">📝 Admissions</a>
-<a href="/?nav=Student" target="_self">🎓 Students</a>
-<a href="/?nav=Parents" target="_self">👨‍👩‍👧‍👦 Parents</a>
-<a href="/?nav=Staff" target="_self">👔 Staff</a>
+<a href="/?nav=Dashboard" target="_self"> Dashboard</a>
+<a href="/?nav=Admission" target="_self"> Admissions</a>
+<a href="/?nav=Student" target="_self"> Students</a>
+<a href="/?nav=Parents" target="_self"> Parents</a>
+<a href="/?nav=Staff" target="_self"> Staff</a>
 </div>
 """, unsafe_allow_html=True)
 
