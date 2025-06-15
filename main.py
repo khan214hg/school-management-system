@@ -117,6 +117,31 @@ nav = query_params.get("nav", "Dashboard")
 
 st.title("🏫 School Management System")
 
+import pandas as pd
+import os
+
+# Helper to load CSV safely
+def load_csv(file_name, default_columns):
+    if os.path.exists(file_name):
+        return pd.read_csv(file_name)
+    else:
+        return pd.DataFrame(columns=default_columns)
+
+# Load data dynamically
+students_df = load_csv("students.csv", ["Name", "Class", "Contact", "Status"])
+staff_df = load_csv("staff.csv", ["Name", "Role", "Contact", "Status"])
+admissions_df = load_csv("admissions.csv", ["Name", "Class", "Contact", "Status"])
+
+# Dashboard metrics
+if nav == "Dashboard":
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric(label="Total Students", value=f"{len(students_df)}")
+    with col2:
+        st.metric(label="Total Staff", value=f"{len(staff_df)}")
+    with col3:
+        st.metric(label="New Admissions", value=f"{len(admissions_df)}")
+
 # Dashboard Analytics
 if nav == "Dashboard":
     col1, col2, col3 = st.columns(3)
