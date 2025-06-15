@@ -25,7 +25,7 @@ st.markdown(
         padding-top: 2rem;
         padding-left: 1rem;
         padding-right: 1rem;
-        color: #e0e0e0;
+        color: #000000;
     }
 
     /* Headings */
