@@ -5,6 +5,8 @@ import student_management
 import parents_management
 import staff_management
 
+import streamlit as st
+
 def theme_switcher():
     theme = st.sidebar.radio("🌗 Select Theme Mode", ["Light", "Dark"])
     if theme == "Dark":
