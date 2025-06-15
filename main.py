@@ -19,6 +19,12 @@ st.markdown(
         padding: 1rem;
     }
 
+    div[data-testid="stMetric"] {
+    background-color: #393e46;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
     /* Sidebar styling */
     div[data-testid="stSidebar"] {
         background-color: #1a1a2e;
