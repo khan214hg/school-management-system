@@ -10,14 +10,13 @@ import os
 
 st.set_page_config(page_title="School Management System", layout="wide")
 
-# CSS for pro design + metrics fix
+# ✅ CSS for metrics + design
 st.markdown("""
 <style>
 .stApp {
     background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 1rem;
-    color: #e0e0e0;
 }
 div[data-testid="stSidebar"] {
     background-color: #1a1a2e;
@@ -45,11 +44,17 @@ div[data-testid="stSidebar"] {
     background-color: #00adb5;
     color: black;
 }
-div[data-testid="stMetric"] {
+div[data-testid="stMetric"] > div {
     background-color: #393e46;
     padding: 1rem;
     border-radius: 8px;
+}
+div[data-testid="stMetricValue"] {
     color: #e0e0e0 !important;
+    font-weight: bold;
+}
+div[data-testid="stMetricLabel"] {
+    color: #00adb5 !important;
 }
 button {
     background-color: #00adb5 !important;
@@ -65,7 +70,7 @@ button:hover {
 </style>
 """, unsafe_allow_html=True)
 
-# Sidebar
+# ✅ Sidebar navbar
 st.sidebar.markdown('<div class="sidebar-title">School Manager</div>', unsafe_allow_html=True)
 st.sidebar.markdown("""
 <div class="custom-nav">
@@ -77,13 +82,13 @@ st.sidebar.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Nav
+# ✅ Nav select
 query_params = st.query_params
 nav = query_params.get("nav", "Dashboard")
 
 st.title("🏫 School Management System")
 
-# Helper
+# ✅ Helper to load data
 def load_csv(file_name, default_cols):
     if os.path.exists(file_name):
         return pd.read_csv(file_name)
@@ -93,9 +98,8 @@ students_df = load_csv("students.csv", ["Name", "Class", "Contact", "Status"])
 staff_df = load_csv("staff.csv", ["Name", "Role", "Contact", "Status"])
 admissions_df = load_csv("admissions.csv", ["Name", "Class", "Contact", "Status"])
 
-# Dashboard
+# ✅ Dashboard
 if nav == "Dashboard":
-    # First: Metrics block (Dashboard Overview)
     st.markdown("### 📊 Dashboard Overview")
     col1, col2, col3 = st.columns(3)
     with col1:
@@ -105,7 +109,6 @@ if nav == "Dashboard":
     with col3:
         st.metric("Total Staff", len(staff_df))
 
-    # Then: Graph block
     st.markdown("### 📈 Admissions by Class")
     if not admissions_df.empty:
         class_counts = admissions_df["Class"].value_counts().reset_index()
@@ -126,7 +129,10 @@ if nav == "Dashboard":
     else:
         st.info("No admissions data available to display graph.")
 
-# Load module
+    # ✅ Call dashboard module (table / other content show hoga)
+    dashboard.app()
+
+# ✅ Other modules
 elif nav == "Admission":
     admission_management.app()
 elif nav == "Student":
@@ -136,6 +142,6 @@ elif nav == "Parents":
 elif nav == "Staff":
     staff_management.app()
 
-# Footer
+# ✅ Footer
 st.sidebar.markdown("---")
 st.sidebar.caption("Powered by Streamlit | Developed by Waris Khan Tareen 😎")
