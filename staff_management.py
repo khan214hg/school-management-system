@@ -4,17 +4,21 @@ import os
 
 FILE_NAME = "staff.csv"
 
-# Check file or create if not exists
-if os.path.exists(FILE_NAME):
-    staff_df = pd.read_csv(FILE_NAME)
-else:
-    staff_df = pd.DataFrame(columns=["Name", "Position", "Contact", "Status"])
-    staff_df.to_csv(FILE_NAME, index=False)
+def load_data():
+    if os.path.exists(FILE_NAME):
+        df = pd.read_csv(FILE_NAME)
+    else:
+        df = pd.DataFrame(columns=["Name", "Position", "Contact", "Status"])
+        df.to_csv(FILE_NAME, index=False)
+    return df
 
 def app():
     st.subheader("👩‍🏫 Staff Management")
 
-    # Add new staff member
+    # Load data
+    staff_df = load_data()
+
+    # Add new staff
     st.markdown("### Add New Staff Member")
     with st.form("staff_form"):
         name = st.text_input("Staff Name")
