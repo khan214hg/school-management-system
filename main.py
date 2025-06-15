@@ -18,11 +18,12 @@ if theme_mode == "Dark":
         <style>
         .stApp {
             background-color: #0e1117;
+            color: white;
         }
         div[data-testid="stSidebar"] {
             background-color: #161b22;
         }
-        label {
+        h1, h2, h3, h4, h5, h6, p, label, span, div, li {
             color: white !important;
         }
         </style>
@@ -35,11 +36,12 @@ else:
         <style>
         .stApp {
             background-color: #ffffff;
+            color: black;
         }
         div[data-testid="stSidebar"] {
             background-color: #f0f2f6;
         }
-        label {
+        h1, h2, h3, h4, h5, h6, p, label, span, div, li {
             color: black !important;
         }
         </style>
