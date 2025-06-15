@@ -32,6 +32,7 @@ def app():
                 admissions_df = pd.concat([admissions_df, pd.DataFrame([new_row])], ignore_index=True)
                 admissions_df.to_csv(FILE_NAME, index=False)
                 st.success(f"Admission added for {name}")
+                # No rerun needed, Streamlit auto-refreshes the display
             else:
                 st.warning("Please fill in all fields.")
 
@@ -44,4 +45,3 @@ def app():
         admissions_df = pd.DataFrame(columns=["Name", "Class", "Contact", "Status"])
         admissions_df.to_csv(FILE_NAME, index=False)
         st.success("All admissions have been reset!")
-        st.experimental_rerun()
