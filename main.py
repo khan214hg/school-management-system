@@ -9,9 +9,6 @@ import staff_management
 st.set_page_config(page_title="School Management System", layout="wide")
 
 # Dark / Light theme switcher
-theme_mode = st.sidebar.radio("🌗 Select Theme", ["Light", "Dark"])
-
-# Apply theme CSS
 if theme_mode == "Dark":
     st.markdown(
         """
@@ -27,8 +24,8 @@ if theme_mode == "Dark":
         label, .css-1cpxqw2, .css-1d391kg {
             color: white !important;
         }
-        button {
-            color: black !important;
+        div[data-testid="stMetricValue"] {
+            color: white !important;
         }
         </style>
         """,
@@ -49,7 +46,7 @@ else:
         label, .css-1cpxqw2, .css-1d391kg {
             color: black !important;
         }
-        button {
+        div[data-testid="stMetricValue"] {
             color: black !important;
         }
         </style>
