@@ -8,7 +8,10 @@ import staff_management
 # App page config
 st.set_page_config(page_title="School Management System", layout="wide")
 
-# Dark / Light theme switcher
+# Dark / Light theme switcher selector
+theme_mode = st.sidebar.radio("🌗 Select Theme", ["Light", "Dark"])
+
+# Apply CSS based on selected theme
 if theme_mode == "Dark":
     st.markdown(
         """
