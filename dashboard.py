@@ -1,26 +1,43 @@
 import streamlit as st
+import pandas as pd
+import os
+
+def load_admissions():
+    if os.path.exists("admissions.csv"):
+        return pd.read_csv("admissions.csv")
+    else:
+        return pd.DataFrame(columns=["Name", "Class", "Contact", "Status"])
+
+def load_students():
+    if os.path.exists("students.csv"):
+        return pd.read_csv("students.csv")
+    else:
+        return pd.DataFrame(columns=["Name", "Class", "Roll Number", "Contact"])
+
+def load_staff():
+    if os.path.exists("staff.csv"):
+        return pd.read_csv("staff.csv")
+    else:
+        return pd.DataFrame(columns=["Name", "Position", "Contact", "Status"])
 
 def app():
-    st.subheader("📊 Dashboard Overview")
+    st.subheader("🏫 Dashboard Overview")
 
-    # Example metrics
-    st.metric(label="Total Students", value="1200", delta="+50 this month")
-    st.metric(label="Total Staff", value="85", delta="+2 this month")
-    st.metric(label="Pending Admissions", value="15", delta="-3 since last week")
+    # Always load latest data
+    admissions_df = load_admissions()
+    students_df = load_students()
+    staff_df = load_staff()
 
-    # Example charts placeholder
-    st.markdown("### Attendance Summary")
-    st.progress(0.75)  # 75% attendance today
+    # Show metrics
+    st.metric("Total Admissions", len(admissions_df))
+    st.metric("Total Students", len(students_df))
+    st.metric("Total Staff", len(staff_df))
 
-    st.markdown("### Fee Collection Status")
-    st.progress(0.60)  # 60% fees collected this month
+    st.markdown("### Recent Admissions")
+    st.dataframe(admissions_df.tail(5))
 
-    # Example info cards
-    st.info("💡 Tip: Use the sidebar to navigate through management modules.")
+    st.markdown("### Recent Students")
+    st.dataframe(students_df.tail(5))
 
-    # Columns example
-    col1, col2 = st.columns(2)
-    with col1:
-        st.success("Upcoming event: Science Fair on 25th Sept")
-    with col2:
-        st.warning("Reminder: Staff meeting tomorrow at 10 AM")
+    st.markdown("### Staff Summary")
+    st.dataframe(staff_df.tail(5))
