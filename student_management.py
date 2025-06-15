@@ -38,7 +38,6 @@ def app():
                 students_df = pd.concat([students_df, pd.DataFrame([new_row])], ignore_index=True)
                 students_df.to_csv(FILE_NAME, index=False)
                 st.success(f"Student {name} added!")
-                st.experimental_rerun()
             else:
                 st.warning("Please fill all fields.")
 
