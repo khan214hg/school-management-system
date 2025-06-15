@@ -79,7 +79,7 @@ st.sidebar.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Nav
+# Navigation
 query_params = st.query_params
 nav = query_params.get("nav", "Dashboard")
 
@@ -98,6 +98,7 @@ admissions_df = load_csv("admissions.csv", ["Name", "Class", "Contact", "Status"
 
 # Dashboard
 if nav == "Dashboard":
+    # Metrics section (only once at top)
     col1, col2, col3 = st.columns(3)
     with col1:
         st.metric("Total Students", len(students_df))
@@ -106,6 +107,7 @@ if nav == "Dashboard":
     with col3:
         st.metric("New Admissions", len(admissions_df))
 
+    # Analytics graph
     st.markdown("### 📊 Admissions by Class")
     if not admissions_df.empty:
         class_counts = admissions_df["Class"].value_counts().reset_index()
