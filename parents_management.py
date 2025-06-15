@@ -4,15 +4,19 @@ import os
 
 FILE_NAME = "parents.csv"
 
-# Check file or create if not exists
-if os.path.exists(FILE_NAME):
-    parents_df = pd.read_csv(FILE_NAME)
-else:
-    parents_df = pd.DataFrame(columns=["Parent Name", "Student Name", "Contact", "Relation"])
-    parents_df.to_csv(FILE_NAME, index=False)
+def load_data():
+    if os.path.exists(FILE_NAME):
+        df = pd.read_csv(FILE_NAME)
+    else:
+        df = pd.DataFrame(columns=["Parent Name", "Student Name", "Contact", "Relation"])
+        df.to_csv(FILE_NAME, index=False)
+    return df
 
 def app():
     st.subheader("👨‍👩‍👧‍👦 Parents Management")
+
+    # Load data
+    parents_df = load_data()
 
     # Add new parent
     st.markdown("### Add New Parent Record")
