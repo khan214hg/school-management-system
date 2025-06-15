@@ -61,7 +61,7 @@ st.markdown(
 
     /* Sidebar navbar links */
     .sidebar-title {
-        color: #00adb5;
+        color: #000000;
         font-size: 24px;
         font-weight: bold;
         text-align: center;
