@@ -111,6 +111,16 @@ nav = query_params.get("nav", "Dashboard")
 
 st.title("🏫 School Management System")
 
+# Dashboard Analytics
+if nav == "Dashboard":
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric(label="Total Students", value="350", delta="+10 this month")
+    with col2:
+        st.metric(label="Total Staff", value="45", delta="+2 this month")
+    with col3:
+        st.metric(label="New Admissions", value="25", delta="+5 this month")
+
 # Load module
 if nav == "Dashboard":
     dashboard.app()
