@@ -107,7 +107,7 @@ staff_df = load_csv("staff.csv", ["Name", "Role", "Contact", "Status"])
 admissions_df = load_csv("admissions.csv", ["Name", "Class", "Contact", "Status"])
 
 # Dashboard
-    if nav == "Dashboard":
+if nav == "Dashboard":
     st.markdown("### 📊 Dashboard Overview")
     col1, col2, col3 = st.columns(3)
     with col1:
@@ -116,7 +116,7 @@ admissions_df = load_csv("admissions.csv", ["Name", "Class", "Contact", "Status"
         st.metric("Total Students", len(students_df))
     with col3:
         st.metric("Total Staff", len(staff_df))
-        
+
     st.markdown("### 📈 Admissions by Class")
     if not admissions_df.empty:
         class_counts = admissions_df["Class"].value_counts().reset_index()
