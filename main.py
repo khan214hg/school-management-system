@@ -4,6 +4,7 @@ import admission_management
 import student_management
 import parents_management
 import staff_management
+from design import apply_react_theme
 
 # App config
 st.set_page_config(page_title="School Management System", layout="wide")
