@@ -4,48 +4,38 @@ import admission_management
 import student_management
 import parents_management
 import staff_management
+import pandas as pd
+import plotly.express as px
 
 st.set_page_config(page_title="School Management System", layout="wide")
 
-# Apply React-style polished CSS
+# Apply CSS (React-style polished)
 st.markdown(
     """
     <style>
-    /* App background + font */
     .stApp {
         background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         color: #e0e0e0;
         padding: 1rem;
     }
-
     div[data-testid="stMetric"] {
-    background-color: #393e46;
-    padding: 1rem;
-    border-radius: 8px;
-}
-
-    /* Sidebar styling */
+        background-color: #393e46;
+        padding: 1rem;
+        border-radius: 8px;
+    }
     div[data-testid="stSidebar"] {
         background-color: #1a1a2e;
-        padding-top: 2rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding: 2rem 1rem;
         color: #e0e0e0;
     }
-
-    /* Headings */
     h1, h2, h3, h4, h5, h6 {
         color: #00adb5;
         margin-bottom: 0.5rem;
     }
-
-    /* General text elements */
     p, span, div, li, label {
         color: #e0e0e0 !important;
     }
-
-    /* Buttons */
     button {
         background-color: #00adb5 !important;
         color: #000000 !important;
@@ -59,16 +49,13 @@ st.markdown(
         background-color: #008891 !important;
         color: #ffffff !important;
     }
-
-    /* Sidebar navbar links */
     .sidebar-title {
-        color: #000000;
+        color: #00adb5;
         font-size: 24px;
         font-weight: bold;
         text-align: center;
         margin-bottom: 20px;
     }
-
     .custom-nav {
         display: flex;
         flex-direction: column;
@@ -112,22 +99,20 @@ nav = query_params.get("nav", "Dashboard")
 
 st.title("🏫 School Management System")
 
-import pandas as pd
-
-# Helper to load csv
+# Helper: Load CSV safely
 def load_csv(file_name, default_cols):
-    try:
+    if os.path.exists(file_name):
         return pd.read_csv(file_name)
-    except:
+    else:
         return pd.DataFrame(columns=default_cols)
 
-# Load data
+import os
 students_df = load_csv("students.csv", ["Name", "Class", "Contact", "Status"])
 staff_df = load_csv("staff.csv", ["Name", "Role", "Contact", "Status"])
 admissions_df = load_csv("admissions.csv", ["Name", "Class", "Contact", "Status"])
 
+# Dashboard view
 if nav == "Dashboard":
-    # Metrics block
     col1, col2, col3 = st.columns(3)
     with col1:
         st.metric(label="Total Students", value=f"{len(students_df)}")
@@ -136,18 +121,20 @@ if nav == "Dashboard":
     with col3:
         st.metric(label="New Admissions", value=f"{len(admissions_df)}")
 
-    # Analytics graph
+    # Graph
     st.markdown("### 📊 Admissions by Class")
     if not admissions_df.empty:
         class_counts = admissions_df["Class"].value_counts().reset_index()
         class_counts.columns = ["Class", "Count"]
-        fig = px.bar(class_counts, x="Class", y="Count", color="Class",
-                     title="Admissions Count by Class",
-                     labels={"Count": "Number of Admissions"})
+        fig = px.bar(
+            class_counts, x="Class", y="Count", color="Class",
+            title="Admissions Count by Class",
+            labels={"Count": "Number of Admissions"}
+        )
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("No admissions data available to display graph.")
-        
+
 # Load module
 if nav == "Dashboard":
     dashboard.app()
