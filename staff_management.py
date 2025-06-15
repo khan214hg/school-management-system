@@ -38,7 +38,6 @@ def app():
                 staff_df = pd.concat([staff_df, pd.DataFrame([new_row])], ignore_index=True)
                 staff_df.to_csv(FILE_NAME, index=False)
                 st.success(f"Staff member {name} added!")
-                st.experimental_rerun()
             else:
                 st.warning("Please fill all fields.")
 
