@@ -94,7 +94,7 @@ st.sidebar.markdown("""
 query_params = st.query_params
 nav = query_params.get("nav", "Dashboard")
 
-st.title("🏫 School Management System")
+st.title(" School Management System")
 
 # Helper
 def load_csv(file_name, default_cols):
@@ -108,7 +108,7 @@ admissions_df = load_csv("admissions.csv", ["Name", "Class", "Contact", "Status"
 
 # Dashboard
 if nav == "Dashboard":
-    st.markdown("### 📊 Dashboard Overview")
+    st.markdown("###  Dashboard Overview")
     col1, col2, col3 = st.columns(3)
     with col1:
         st.metric("Total Admissions", len(admissions_df))
@@ -117,7 +117,7 @@ if nav == "Dashboard":
     with col3:
         st.metric("Total Staff", len(staff_df))
 
-    st.markdown("### 📈 Admissions by Class")
+    st.markdown("###  Admissions by Class")
     if not admissions_df.empty:
         class_counts = admissions_df["Class"].value_counts().reset_index()
         class_counts.columns = ["Class", "Count"]
@@ -150,4 +150,4 @@ elif nav == "Staff":
 
 # Footer
 st.sidebar.markdown("---")
-st.sidebar.caption("Powered by Streamlit | Developed by Waris Khan Tareen 😎")
+st.sidebar.caption("Powered by Streamlit | Developed by Waris Khan Tareen ")
