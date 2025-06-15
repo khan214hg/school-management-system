@@ -20,3 +20,24 @@ def load_staff():
     else:
         return pd.DataFrame(columns=["Name", "Position", "Contact", "Status"])
 
+def app():
+    st.subheader("🏫 Dashboard Overview")
+
+    # Always load latest data
+    admissions_df = load_admissions()
+    students_df = load_students()
+    staff_df = load_staff()
+
+    # Show metrics
+    st.metric("Total Admissions", len(admissions_df))
+    st.metric("Total Students", len(students_df))
+    st.metric("Total Staff", len(staff_df))
+
+    st.markdown("### Recent Admissions")
+    st.dataframe(admissions_df.tail(5))
+
+    st.markdown("### Recent Students")
+    st.dataframe(students_df.tail(5))
+
+    st.markdown("### Staff Summary")
+    st.dataframe(staff_df.tail(5))
