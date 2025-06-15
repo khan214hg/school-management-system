@@ -14,34 +14,24 @@ st.markdown(
     .stApp {
         background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #e0e0e0;
     }
     div[data-testid="stSidebar"] {
         background-color: #1a1a2e;
         padding-top: 2rem;
+        color: #e0e0e0;
     }
-    .sidebar-title {
+    h1, h2, h3, h4, h5, h6 {
         color: #00adb5;
-        font-size: 24px;
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 20px;
     }
-    .custom-nav {
-        display: flex;
-        flex-direction: column;
+    p, span, div, li {
+        color: #e0e0e0 !important;
     }
-    .custom-nav a {
-        color: #eeeeee;
-        padding: 0.75rem 1rem;
-        margin: 0.25rem 0;
-        text-decoration: none;
-        border-radius: 5px;
-        background-color: #393e46;
-        transition: background 0.3s;
+    label, .css-1cpxqw2, .css-1d391kg {
+        color: #eeeeee !important;
     }
-    .custom-nav a:hover {
-        background-color: #00adb5;
-        color: black;
+    div[data-testid="stMetricValue"], div[data-testid="stMetricLabel"] {
+        color: #00adb5 !important;
     }
     button[kind="primary"] {
         background-color: #00adb5 !important;
@@ -49,8 +39,18 @@ st.markdown(
         border-radius: 8px;
         padding: 0.5em 1em;
     }
-    h1, h2, h3 {
-        color: #00adb5;
+    .custom-nav a {
+        color: #eeeeee;
+        background-color: #393e46;
+        border-radius: 5px;
+        padding: 0.75rem 1rem;
+        margin: 0.25rem 0;
+        text-decoration: none;
+        transition: background 0.3s;
+    }
+    .custom-nav a:hover {
+        background-color: #00adb5;
+        color: black;
     }
     </style>
     """,
