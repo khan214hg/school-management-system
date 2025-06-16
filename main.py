@@ -9,8 +9,6 @@ import plotly.express as px
 import os
 from firebase_init import db
 
-from firebase_init import db
-
 def test_firestore():
     doc_ref = db.collection("test_collection").document("test_doc")
     doc_ref.set({"message": "Firestore is connected!"})
