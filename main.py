@@ -9,6 +9,16 @@ import plotly.express as px
 import os
 from firebase_init import db
 
+from firebase_init import db
+
+def test_firestore():
+    doc_ref = db.collection("test_collection").document("test_doc")
+    doc_ref.set({"message": "Firestore is connected!"})
+    print("✅ Firestore write success")
+
+test_firestore()
+
+
 st.set_page_config(page_title="School Management System", layout="wide")
 
 # ✅ CSS for polished look
