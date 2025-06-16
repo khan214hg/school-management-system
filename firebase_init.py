@@ -1,9 +1,7 @@
 import streamlit as st
-import firebase_admin
-from firebase_admin import credentials, db
+import json
 
-# Load service account (Streamlit secrets ya direct file ka path)
-cred = credentials.Certificate("serviceaccountkey.json")
-firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://your-project-id.firebaseio.com'
-})
+firebase_config = json.loads(st.secrets["firebase"])
+cred = credentials.Certificate(firebase_config)
+firebase_admin.initialize_app(cred)
+db = firestore.client()
