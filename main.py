@@ -7,6 +7,7 @@ import staff_management
 import pandas as pd
 import plotly.express as px
 import os
+from firebase_init import db
 
 st.set_page_config(page_title="School Management System", layout="wide")
 
