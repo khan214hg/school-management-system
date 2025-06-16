@@ -2,3 +2,4 @@ streamlit>=1.18.0
 pandas
 firebase-admin
 plotly
+pip install firebase-admin
